@@ -21,6 +21,9 @@
   }
 }
 
+img {
+  width: 100%;
+}
 
 * {
   margin: 0;
@@ -39,9 +42,6 @@ body {
   max-width: 1920px;
 }
 
-img {
-  max-width: 100%;
-}
 
 a {
   text-decoration: none;
@@ -213,30 +213,39 @@ a {
   display: flex;
   transition-duration: .3s;
 }
-
-.sale__item:hover {
-  transform: scale(1.1);
-  box-shadow: 0 10px 30px 0 rgba(10, 5, 5, 0.8);
-}
-
-
-.sale__content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
+  .sale__item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px 0 rgba(10, 5, 5, 0.8);
+  }
+  .sale__item img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .sale__content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
 .sale__item_big {
-  min-height: 180px;
-  grid-column: 1 / -1;
+    justify-content: center;
+    align-items: center;
+    transition-duration: .3s;
+    min-height: 180px;
+    grid-column: 1 / -1;
 }
-
+  .sale__item_big .img-1 {
+    width: 100%;
+    height: auto;
+  }
+  
 .sale__text {
   font-style: normal;
   font-weight: 400;
@@ -427,6 +436,10 @@ a {
   color: #FBFBFB;
 }
 
+.advantages__img {
+  width: auto;
+}
+
 .advantages__text {
   font-style: normal;
   font-weight: 300;
@@ -453,7 +466,10 @@ a {
   justify-content: center;
   align-items: center;
 }
-  .ava:active {
+.ava {
+  width: auto;
+}
+  .ava:hover {
     animation: rotate-tl 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
   }
 
@@ -572,12 +588,10 @@ a {
       padding-left: 40px;
       padding-right: 40px;
     }
-    /* .sale{
-    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+
+    .sale {
+      row-gap: 0;
     }
-    .sale>:nth-last-child(2){
-      grid-column: 1/-1;
-    } */
     .product-box__content>:nth-last-child(2),
     .product-box__content>:nth-last-child(3){
       display: none;
@@ -613,9 +627,10 @@ a {
   }
   .sale {
     grid-template-columns: 1fr;
+    row-gap: 30px;
   }
-  .sale__item {
-    height: 500px;    
+  .sale__item  img {
+    width: 90vw;
   }
   .sale__item_big{
     height: 100%;
