@@ -37,7 +37,6 @@ html {
 body {
   background-color: #fff;
   box-shadow: 10px 25px 50px 5px rgba(10, 10, 10, 0.4);
-  margin: 30px auto 50px;
   font-family: 'Lato', sans-serif;
   max-width: 1920px;
 }
@@ -214,7 +213,7 @@ a {
   transition-duration: .3s;
 }
   .sale__item:hover {
-    transform: scale(1.1);
+    transform: scale(1.008);
     box-shadow: 0 10px 30px 0 rgba(10, 5, 5, 0.8);
   }
   .sale__item img {
@@ -381,15 +380,13 @@ a {
 .product__ancor{
   padding: 15px 38px;
   grid-column: 1/-1;
-  display: flex;
-  justify-items: center;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: #F26376;
   border: 1px solid #F26376;
-  transition: all .2s .1s;
+  transition: .1s .1s;
 }
   .product__ancor:hover {
     color: #FFF;
@@ -552,9 +549,9 @@ a {
     color: #FBFBFB;
     transition: .05s .1s;
   }
-  .footer__left:hover p {
+  .footer__left:hover {
     color: #F16D7F;
-  }
+}
 
 .footer__right {
   margin-top: 24px;
