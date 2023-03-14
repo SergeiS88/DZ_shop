@@ -1,4 +1,4 @@
-const template = document.querySelector('[type="template"]').innerHTML;
+const templateProduct = document.querySelector('.template__product').innerHTML;
 const productData = JSON.parse(productDataJson);
 
 class Templator {
@@ -13,7 +13,17 @@ class Templator {
         
         while (match = templateVariableRe.exec(this._template)) {
             const variableName = match[1].trim();
+            if (!variableName) {  // Вдруг там просто пустые скобки
+                continue;
+            }
             const data = compObj[variableName];
+
+            if (typeof data === 'function') {
+                window[variableName] = data; // Сохранили функцию в window
+                result = result.replace(new RegExp(match[0], 'gi'), `window.${variableName}()`); // Использовали
+                continue // Потому что мы уже обработали функцию — идём дальше
+            }
+
             result = result.replace(new RegExp(match[0], 'gi'), data);
         }
     
@@ -21,13 +31,11 @@ class Templator {
     }
 };
 
-console.log(new Templator(template));
-
 productData.forEach(elem => {
-    document.querySelector('.product-box__content').insertAdjacentHTML('beforeend', (new Templator(template)).compile({
+    document.querySelector('.product-box__content').insertAdjacentHTML('beforeend', (new Templator(templateProduct)).compile({
         productId: elem.id,
         productImg: elem.img,
-        productName: elem.productName,
+        productName: elem.name,
         productDescription: elem.description,
         productPrice: elem.price,
     }));
@@ -38,3 +46,4 @@ productAncor.classList.add('product__ancor');
 productAncor.href = '#';
 productAncor.textContent = 'Browse All Product';
 document.querySelector('.product-box__content').appendChild(productAncor);
+
